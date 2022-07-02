@@ -22,6 +22,9 @@ contract ConcatString{
     function concat(string memory _a, string memory _b, string memory _c, string memory _d, string memory _e) public pure returns (string memory){
         return string(abi.encodePacked(_a,_b,_c,_d,_e));
     }
+    function hashKeccak256() public pure returns (bytes32){
+        return keccak256(bytes(concat("a","b","c","d","e")));
+    }
     function compare() public pure returns (bool){
         return (keccak256(bytes(strConcat5("a","b","c","d","e"))) == keccak256(bytes(concat("a","b","c","d","e"))));
     }

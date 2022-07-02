@@ -27,6 +27,7 @@ contract VerifySignature {
         "coffee and donuts",
         1
     )
+    "0x14723A09ACff6D2A60DcdF7aA4AFf308FDDC160C123coffee and donuts1"
 
     hash = "0xcf36ac4f97dc10d91fc2cbb20d718e94a8cbfe0f82eaedc6a4aa38946fb797cd"
     */
@@ -39,6 +40,9 @@ contract VerifySignature {
         return keccak256(abi.encodePacked(_to, _amount, _message, _nonce));
     }
 
+    // Private Key  {bisa ambil dari ganache}
+    // sign menggunakan web3.eth.accounts.sign(messageHash,privateKey)
+
     /* 3. Sign message hash
     # using browser
     account = "copy paste account of signer here"
@@ -50,6 +54,7 @@ contract VerifySignature {
     Signature will be different for different accounts
     0x993dab3dd91f5c6dc28e17439be475478f5635c92a56e17e82349d3fb2f166196f466c0b4e0c146f285204f0dcb13e5ae67bc33f4b888ec32dfe0a063e8f3f781b
     */
+
     function getEthSignedMessageHash(bytes32 _messageHash)
         public
         pure
@@ -98,6 +103,10 @@ contract VerifySignature {
         return ecrecover(_ethSignedMessageHash, v, r, s);
     }
 
+
+    // 0xbd0833c954b84cf494dff030d42b55b2fb386e65f1d6aa5b0b39733e89e4d803 r 
+    // 3b9247ac560a45e69764ea9ac4309fc36c6efabe793913bcab74e84527e185d0 s 
+    // 1b v
     function splitSignature(bytes memory sig)
         public
         pure
